@@ -145,9 +145,15 @@ class EntryConverter(object):
         for entry, meta in unprocessed:
             try:
                 file_title = entry.title.replace(' ', '-')
+
                 date = meta['inserted_at']
                 file_date = date.strftime("%Y-%m-%d")
                 file_name = file_date + '-' + file_title + '.md'
+                file_name = file_name.replace('/','_')
+
+
+                # print self.post_path + file_name
+
                 with open(self.post_path + file_name, 'w+') as f:
                     # write file
 
